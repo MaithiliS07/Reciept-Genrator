@@ -1,10 +1,8 @@
 <?php 
-$method=$_SERVER['REQUEST_METHOD'];
-@include 'db-connect.php';
 
-//Insert values
-if($method=='POST')
-  {
+if(isset($_POST['generatebtn'])){
+
+
     $fname=$_POST['firmname'];
     $faddress=$_POST['firmaddress'];
     $billto=$_POST['billto'];
