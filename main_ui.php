@@ -1,5 +1,7 @@
 <?php 
 
+include "db-connect.php";
+
 if(isset($_POST['generatebtn'])){
 
 
@@ -15,19 +17,21 @@ if(isset($_POST['generatebtn'])){
     $discription=$_POST['discp'];
     $quantity=$_POST['qty'];
     $unitprice=$_POST['uprice'];
-    
-  $sql = mysqli_query($conn,"INSERT INTO `receipt_details`(`id`, `FirmName`, `FirmAddress`, `BillTo`, `BillToAddress`, `Discount`, `SubtotalDiscount`, `TaxRate`, `Shipping`) VALUES ('','$fname','$faddress','$billto','$baddress','$discount','$sdiscount','$tax','$shiphandle'))");
 
-  $sql .= mysqli_query($conn,"INSERT INTO `reciept_items`(`id`, `BillTo`, `Discription`, `Quantity`, `UnitPrice`) VALUES ('','$billto','$discription','$quantity','$unitprice')");
+
+
+    $sql = "INSERT INTO receipt_details (`FirmName`, `FirmAddress` )
+    VALUES ( '$fname','$faddress' )";
 
   if (mysqli_query($conn, $sql)) {
-      echo "Records added successfully..";
-
-  } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-  }
-
-  }
+       echo "New record created successfully !";
+    } else {
+       echo "Error: " . $sql . "
+" . mysqli_error($conn);
+    }
+    mysqli_close($conn);
+}
+  
 ?>
 
 <!DOCTYPE html>
@@ -51,12 +55,12 @@ if(isset($_POST['generatebtn'])){
         <div class="card-body" style="padding: 31px;">
             <div>
                 <ul class="nav nav-pills nav-fill" role="tablist">
-                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="pill" href="#tab-1">Receipt Details</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="pill" href="#tab-2">Receipt Items</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="pill" href="#tab-1">Receipt Details</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link " role="tab" data-bs-toggle="pill" href="#tab-2">Receipt Items</a></li>
                 </ul>
                 <div class="tab-content" style="padding: 0px;margin-top: 21px;">
-                    <div class="tab-pane fade" role="tabpanel" id="tab-1">
-                        <form action="" method="POST">
+                    <div class="tab-pane fade show active" role="tabpanel" id="tab-1">
+                        <form action="main_ui.php" method="POST">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6"><label class="col-form-label">Firm Name</label></div>
@@ -93,7 +97,7 @@ if(isset($_POST['generatebtn'])){
                             </div>
                       
                     </div>
-                    <div class="tab-pane fade show active" role="tabpanel" id="tab-2">
+                    <div class="tab-pane fade " role="tabpanel" id="tab-2">
                         
                             <div class="container">
                                 <div class="row">
@@ -110,15 +114,16 @@ if(isset($_POST['generatebtn'])){
                                 </div>
                             </div>
                         <div style="margin-top: 21px;"><button class="btn btn-primary" type="submit" style="height: 36px;border-style: none;border-color: var(--bs-pink);background: var(--bs-pink);">Add Item</button></div>
-                        </div><button class="btn btn-primary" type="submit" name="generatebtn" style="margin: 14px;border-style: none;background: var(--bs-pink);">Generate Receipt&nbsp;</button>
-    
-                    </form>
+                     
 
                     </div>
                 </div>
             </div>
+        </div><button class="btn btn-primary" type="submit" name="generatebtn" style="margin: 14px;border-style: none;background: var(--bs-pink);">Generate Receipt&nbsp;</button>
+        </form>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
+
