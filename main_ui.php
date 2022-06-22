@@ -22,7 +22,6 @@ if(isset($_POST['generatebtn'])){
 
   if (mysqli_query($conn, $sql)) {
       echo "Records added successfully..";
-      header('location:main_ui.php');
 
   } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -111,15 +110,15 @@ if(isset($_POST['generatebtn'])){
                                 </div>
                             </div>
                         <div style="margin-top: 21px;"><button class="btn btn-primary" type="submit" style="height: 36px;border-style: none;border-color: var(--bs-pink);background: var(--bs-pink);">Add Item</button></div>
-                        </form>
+                        </div><button class="btn btn-primary" type="submit" name="generatebtn" style="margin: 14px;border-style: none;background: var(--bs-pink);">Generate Receipt&nbsp;</button>
+    
+                    </form>
 
                     </div>
                 </div>
             </div>
-        </div><button class="btn btn-primary" type="button" name="generatebtn" style="margin: 14px;border-style: none;background: var(--bs-pink);">Generate Receipt&nbsp;</button>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
