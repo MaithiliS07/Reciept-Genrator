@@ -59,7 +59,7 @@ if($method=='POST')
                 </ul>
                 <div class="tab-content" style="padding: 0px;margin-top: 21px;">
                     <div class="tab-pane fade" role="tabpanel" id="tab-1">
-                        <form action="main_ui.php" method="POST">
+                        <form action="" method="POST">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6"><label class="col-form-label">Firm Name</label></div>
@@ -94,10 +94,10 @@ if($method=='POST')
                                     <div class="col-md-6"><input class="form-control" type="text" name="shipping"></div>
                                 </div>
                             </div>
-                        </form>
+                      
                     </div>
                     <div class="tab-pane fade show active" role="tabpanel" id="tab-2">
-                        <form>
+                        
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6"><label class="col-form-label">Discription</label></div>
@@ -112,8 +112,9 @@ if($method=='POST')
                                     <div class="col-md-6"><input class="form-control" type="text" name="uprice"></div>
                                 </div>
                             </div>
+                        <div style="margin-top: 21px;"><button class="btn btn-primary" type="submit" style="height: 36px;border-style: none;border-color: var(--bs-pink);background: var(--bs-pink);">Add Item</button></div>
                         </form>
-                        <div style="margin-top: 21px;"><button class="btn btn-primary" type="button" style="height: 36px;border-style: none;border-color: var(--bs-pink);background: var(--bs-pink);">Add Item</button></div>
+
                     </div>
                 </div>
             </div>
